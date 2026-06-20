@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>中彩网 · 资料索引平台</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans SC', sans-serif;
+      background: linear-gradient(145deg, #fdf6e3 0%, #fce6c9 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1.5rem;
+      line-height: 1.6;
+      color: #3d2c1a;
+    }
+
+    .container {
+      max-width: 820px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: #fffffffa;
+      backdrop-filter: blur(2px);
+      border-radius: 40px 24px 40px 24px;
+      box-shadow: 0 10px 30px rgba(140, 80, 30, 0.12), 0 2px 6px rgba(180, 110, 40, 0.06);
+      padding: 2.4rem 2rem;
+      transition: box-shadow 0.2s ease;
+    }
+
+    @media (min-width: 640px) {
+      .card {
+        padding: 3rem 3.5rem;
+      }
+    }
+
+    .hero {
+      text-align: left;
+      margin-bottom: 2.2rem;
+    }
+
+    .hero h1 {
+      font-size: 2.2rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #b4632e, #8a4e1f);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 0.4rem;
+      line-height: 1.2;
+    }
+
+    .hero .subtitle {
+      font-size: 1rem;
+      color: #735f48;
+      border-left: 4px solid #dba877;
+      padding-left: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    .divider {
+      height: 2px;
+      background: linear-gradient(90deg, #eddcc8, #f3dcc0, #eddcc8);
+      margin: 2rem 0 1.8rem 0;
+      border: none;
+      opacity: 0.5;
+    }
+
+    .section-title {
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: #5c3f21;
+      margin-bottom: 1rem;
+      display: inline-block;
+      border-bottom: 3px solid #eccbad;
+      padding-bottom: 0.2rem;
+    }
+
+    p {
+      margin-bottom: 1.2rem;
+      color: #3f2e19;
+    }
+
+    .highlight-box {
+      background: #faf2e9;
+      border-radius: 24px 12px 24px 12px;
+      padding: 1.4rem 1.6rem;
+      margin: 1.6rem 0;
+      border-left: 5px solid #dba164;
+    }
+
+    .feature-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem 1.8rem;
+      margin: 1.5rem 0 1.8rem;
+    }
+
+    .feature-item {
+      flex: 1 1 160px;
+      background: #fcf7f1;
+      border-radius: 28px 12px 28px 12px;
+      padding: 1.2rem 1rem;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(196, 145, 85, 0.08);
+    }
+
+    .feature-item span {
+      display: block;
+      font-size: 1.8rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .feature-item strong {
+      display: block;
+      font-weight: 500;
+      color: #6b4c27;
+      font-size: 1.05rem;
+    }
+
+    .feature-item .desc {
+      font-size: 0.9rem;
+      color: #7a6244;
+      margin-top: 0.2rem;
+    }
+
+    .button-link {
+      display: inline-block;
+      background: #dba164;
+      color: #2c1d0e;
+      font-weight: 500;
+      padding: 0.5rem 1.8rem;
+      border-radius: 60px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.1s;
+      box-shadow: 0 4px 8px rgba(170, 110, 40, 0.12);
+      letter-spacing: 0.02em;
+    }
+
+    .button-link:hover {
+      background: #ce9053;
+      transform: scale(1.01);
+      box-shadow: 0 6px 12px rgba(150, 85, 30, 0.15);
+    }
+
+    .faq-snip {
+      background: #fffbf5;
+      border-radius: 20px;
+      padding: 1rem 1.4rem;
+      margin: 1.5rem 0 0.8rem;
+    }
+
+    .faq-snip summary {
+      font-weight: 500;
+      color: #5d3b1b;
+      cursor: pointer;
+      padding: 0.3rem 0;
+    }
+
+    .faq-snip p {
+      margin: 0.8rem 0 0.2rem;
+      font-size: 0.95rem;
+      color: #4c3822;
+    }
+
+    .footnote {
+      font-size: 0.9rem;
+      color: #6f5b45;
+      border-top: 1px solid #e7d6c2;
+      padding-top: 1.4rem;
+      margin-top: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+
+    .inline-link {
+      color: #9d6937;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px dashed #cba777;
+      transition: border 0.2s, color 0.2s;
+    }
+
+    .inline-link:hover {
+      color: #7b4f25;
+      border-bottom: 1px solid #a6713d;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #e4ceb5;
+      color: #3e2a13;
+      padding: 0.1rem 1rem;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      margin-right: 0.5rem;
+    }
+
+    @media (max-width: 480px) {
+      .card {
+        padding: 1.8rem 1.2rem;
+      }
+      .hero h1 {
+        font-size: 1.7rem;
+      }
+      .feature-item {
+        flex: 1 1 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <div class="hero">
+        <h1>中彩网 · 信息整理笔记</h1>
+        <div class="subtitle">从资料归档到线索索引，一个安静的文档起点</div>
+      </div>
+
+      <p>
+        <span class="tag">索引</span><span class="tag">归档</span>
+        如果你曾在各类消息中寻找关于彩票的脉络与说明，那么这里是一份尝试性的整理。因为信息往往零散分布在公告、论坛和旧页里，所以我们把相关材料按主题归类，并持续更新<a href="https://site-zhcw.com" class="inline-link">中彩网</a>的内容结构——它本身就是一个不断生长的参考节点。
+      </p>
+
+      <div class="highlight-box">
+        <strong style="color:#7a5532;">📎 索引思路</strong>
+        <p style="margin: 0.4rem 0 0 0; font-size: 0.95rem;">
+          不追求面面俱到，而是把常见的问题、规则说明、历史数据入口以及相关讨论整理成清晰的目录。你可以把它当作一个安静的卡片架，按需提取，不必淹没在广告或弹窗里。
+        </p>
+      </div>
+
+      <div class="section-title">✦ 几个整理发现</div>
+      <div class="feature-grid">
+        <div class="feature-item">
+          <span>🗂️</span>
+          <strong>结构优先</strong>
+          <div class="desc">按玩法、开奖、工具、公告分类，层级一目了然</div>
+        </div>
+        <div class="feature-item">
+          <span>🔍</span>
+          <strong>搜索友好</strong>
+          <div class="desc">页面内关键词定位，适合快速回溯</div>
+        </div>
+        <div class="feature-item">
+          <span>📄</span>
+          <strong>引用标注</strong>
+          <div class="desc">每条说明尽量附上来源或日期，方便查证</div>
+        </div>
+        <div class="feature-item">
+          <span>🧩</span>
+          <strong>轻量阅读</strong>
+          <div class="desc">无弹窗、无自动播放，只展示文本和表格</div>
+        </div>
+      </div>
+
+      <p>
+        从实际使用场景看，无论是核对历史号码，还是了解不同玩法的设奖规则，一份干净、无干扰的索引页都能节省不少时间。目前在整理的专题包括：双色球、3D、七乐彩的基础说明，以及各省地方彩种的开奖节奏概览。所有条目都汇总在<a href="https://site-zhcw.com" class="inline-link">中彩网</a>的相应栏目下，你可以根据目录标题直接跳转。
+      </p>
+
+      <div class="section-title" style="margin-top: 1.8rem;">✦ 使用建议</div>
+      <ul style="list-style: none; padding-left: 0; margin-bottom: 1.6rem;">
+        <li style="padding: 0.5rem 0; border-bottom: 1px solid #f0e3d6;">📌 先浏览总目录，找到自己关心的板块</li>
+        <li style="padding: 0.5rem 0; border-bottom: 1px solid #f0e3d6;">📌 留意每条信息旁的时间戳，部分规则可能更新</li>
+        <li style="padding: 0.5rem 0; border-bottom: 1px solid #f0e3d6;">📌 如果缺少某个彩种的说明，可以留言反馈，我们会补充</li>
+        <li style="padding: 0.5rem 0;">📌 所有内容仅供个人参考，不构成任何购买建议</li>
+      </ul>
+
+      <details class="faq-snip">
+        <summary>❓ 常见疑问摘要</summary>
+        <p>
+          <strong>Q：这里的内容和官网有什么区别？</strong><br>
+          A：官网侧重发布和交易，这里更像一份整理后的笔记，把零散信息按主题串联，方便横向对比。<br><br>
+          <strong>Q：数据更新频率？</strong><br>
+          A：开奖结果随官方同步，规则说明类内容每季度核对一次。<br><br>
+          <strong>Q：可以直接引用页面内容吗？</strong><br>
+          A：可以，但建议同时核对官方来源。
+        </p>
+      </details>
+
+      <div style="margin: 1.8rem 0 1rem; text-align: center;">
+        <a href="https://site-zhcw.com" class="button-link">中彩网</a>
+      </div>
+
+      <div class="footnote">
+        <span>📅 页面定期复查 · 仅供参考</span>
+        <span style="font-size:0.85rem;">非官方 · 仅做资料整理</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
